@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.cron" id="mano_cron_create_shipping">
+            <field name="name">Mano create shipping</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="state">code</field>
+            <field name="code">model.create_shipping_cron()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+
+        <record model="ir.cron" id="mano_cron_create_shipping_espagne">
+            <field name="name">Mano Shipping Espagne</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="state">code</field>
+            <field name="code">model.create_shipping_cron_spain()</field>
+            <field name="interval_number">20</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+
+        <record model="ir.cron" id="mano_cron_create_shipping_italy">
+            <field name="name">Mano Shipping Italie</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="state">code</field>
+            <field name="code">model.create_shipping_cron_italy()</field>
+            <field name="interval_number">20</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+
+        <record model="ir.cron" id="mano_cron_create_shipping_germany">
+            <field name="name">Mano Shipping Allmagne</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="state">code</field>
+            <field name="code">model.create_shipping_cron_germany()</field>
+            <field name="interval_number">20</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+    </data>
+</odoo>

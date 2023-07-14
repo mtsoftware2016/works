@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_partner_form_view_mano" model="ir.ui.view">
+            <field name="name">res.partner.form.mano</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='child_ids']//form//field[@name='mobile']" position="after">
+                    <field name="is_professional" attrs="{'invisible':[('type','not in', ('invoice','delivery'))]}"/>
+                    <field name="company_mano" attrs="{'invisible':[('type','not in', ('invoice','delivery'))]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2022 Author Maki Turki -->
+<odoo>
+    <record id="mano_config_settings" model="ir.ui.view">
+        <field name="name">mano.config.settings.inherited.settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="20"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="MANO" string="MANO" data-key="mano_connexion">
+                    <h2>Mano</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="api_key_mano"/>
+                                <div class="text-muted">
+                                    Please generate an API KEY from your instance Manomano.
+                                </div>
+                                <field name="api_key_mano"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="seller_contract_id"/>
+                                <div class="text-muted">
+                                    Seller Contract
+                                </div>
+                                <field name="seller_contract_id"/>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="contract_id_fr"/>
+                                <div class="text-muted">
+                                    Seller Contract France
+                                </div>
+                                <field name="contract_id_fr"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

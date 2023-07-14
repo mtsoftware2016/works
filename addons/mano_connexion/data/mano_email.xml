@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mannon_error_email" model="mail.template">
+            <field name="name">Mano Email Error</field>
+            <field name="email_from">${user.email}</field>
+            <field name="email_to">morgan.josset@outillage-online.fr</field>
+            <field name="email_cc">remi.farge@outillage-online.fr</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                <![CDATA[
+                Monsieur, <br>
+                Vous avez une commande qui a été annulé en raison de sécurité <br>
+                Vous avez deux produit qui ont la meme référence interne <br>
+                Veuillez corriger ce probléme pour pouvoir importer cette commande
+                Produit avec référence ${ctx.get('product_1')}<br>
+                ]]>
+            </field>
+        </record>
+
+        <record id="mannon_error_email_creation" model="mail.template">
+            <field name="name">Mano Email Error Creation Product</field>
+            <field name="email_from">${user.email}</field>
+            <field name="email_to">morgan.josset@outillage-online.fr</field>
+            <field name="email_cc">remi.farge@outillage-online.fr</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                <![CDATA[
+                Monsieur, <br>
+                Vous avez une commande qui a été annulé en raison de sécurité <br>
+                Vous avez un produit référence interne qui n'existe pas <br>
+                Veuillez corriger ce probléme pour pouvoir importer cette commande
+                Produit avec référence ${ctx.get('product_1')}<br>
+                ]]>
+            </field>
+        </record>
+
+        <record id="mano_error_update_offers" model="mail.template">
+            <field name="name">Mano Update Offer Erreurs</field>
+            <field name="email_from">${user.email}</field>
+            <field name="email_to">morgan.josset@outillage-online.fr</field>
+            <field name="email_cc">remi.farge@outillage-online.fr</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="subject">API Offre ManoMano</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                <![CDATA[
+                Monsieur, <br>
+                Vous avez des erreurs  de la plateforme ManoMano
+                <br>
+                <br>
+                    <strong style="font-size: 16px;">Informations:</strong> <br>
+                        <p>  ${ctx.get('errors')} </p>
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

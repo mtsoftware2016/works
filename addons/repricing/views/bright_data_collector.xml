@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="bright_data_collector_view_form" model="ir.ui.view">
+        <field name="name">Bright Data</field>
+        <field name="model">bright.data.collector</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="collector"/>
+                            <field name="bearer_token"/>
+                        </group>
+                        <group>
+                            <field name="is_activated" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="bright_data_collector_view_tree" model="ir.ui.view">
+        <field name="name">Collecteur Bright Data</field>
+        <field name="model">bright.data.collector</field>
+        <field name="arch" type="xml">
+            <tree create="true">
+                <field name="name"/>
+                <field name="collector"/>
+            </tree>
+        </field>
+    </record>
+    <record id="bright_data_collector_action" model="ir.actions.act_window">
+        <field name="name">Setting</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bright.data.collector</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="bright_data_collector_menu"
+              name="Bright Data"
+              action="bright_data_collector_action"
+              web_icon="repricing,static/description/bright.png"/>
+</odoo>

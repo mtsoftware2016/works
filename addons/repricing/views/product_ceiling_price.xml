@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 Maki Turki
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="product_ceiling_price_view_form" model="ir.ui.view">
+        <field name="name">prix.plafond.form.view</field>
+        <field name="model">product.ceiling.price</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                    <center>
+                        <separator string='Route Acheter'
+                                   style="color:red;font-weight: 800;font-size: 40px;"/>
+                    </center>
+                    <field name="price_list_route_buy">
+                        <tree editable="bottom">
+                            <field name="order_number"/>
+                            <field name="number_of_availability_days"/>
+                            <field name="number_of_availability_days_2"/>
+                            <field name="multiplier"/>
+                        </tree>
+                    </field>
+
+                    <center>
+                        <separator string='Route Livraison Directe'
+                                   style="color:red;font-weight: 800;font-size: 40px;"/>
+                    </center>
+                    <field name="price_list_route_direct_delivery">
+                        <tree editable="bottom">
+                            <field name="sales"/>
+                            <field name="create_date_from"/>
+                            <field name="create_date_to"/>
+                            <field name="multiplier"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_ceiling_price_view_tree" model="ir.ui.view">
+        <field name="name">prix.plafond.tree.view</field>
+        <field name="model">product.ceiling.price</field>
+        <field name="arch" type="xml">
+            <tree create="true">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_ceiling_price_action" model="ir.actions.act_window">
+        <field name="name">Prix Plafond</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.ceiling.price</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="product_ceiling_price_menu"
+              name="Prix Plafond"
+              parent="sale.prod_config_main"
+              action="product_ceiling_price_action"
+              sequence="10"
+    />
+
+</odoo>
+

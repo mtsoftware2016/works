@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="mano_form_view" model="ir.ui.view">
+        <field name="name">Mano</field>
+        <field name="model">mano.mano</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="login"/>
+                            <field name="password"/>
+                        </group>
+
+                    </group>
+                     <button name="test_connexion_mano" string="Test Connexion" type="object" class="btn-primary"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="mano_tree_view" model="ir.ui.view">
+        <field name="name">Mano</field>
+        <field name="model">mano.mano</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="name"/>
+                <field name="login"/>
+                <field name="password"/>
+            </tree>
+        </field>
+    </record>
+    <record id="mano_action" model="ir.actions.act_window">
+        <field name="name">Mano</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mano.mano</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="mano_menu" name="Mano Connexion" action="mano_action"
+              sequence="1" web_icon="mano_connexion,static/description/icon.png"/>
+</odoo>

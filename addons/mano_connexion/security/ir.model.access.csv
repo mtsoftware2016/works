@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_mano_mano,mano.mano.acces,mano_connexion.model_mano_mano,,1,1,1,1
+access_mano_setting,mano.setting.acces,mano_connexion.model_mano_setting,,1,1,1,1
+access_mano_ref_order,mano.order.reference.acces,mano_connexion.model_mano_order_reference,,1,1,1,1
+

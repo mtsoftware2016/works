@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="mano_form_setting_view" model="ir.ui.view">
+        <field name="name">Setting</field>
+        <field name="model">mano.setting</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="mano_connexion"/>
+                            <field name="ref_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <button name="sale_order_resolver" string="Import Orders" type="object" class="btn-primary"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="mano_tree_setting_view" model="ir.ui.view">
+        <field name="name">Mano</field>
+        <field name="model">mano.setting</field>
+        <field name="arch" type="xml">
+            <tree create="true">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="mano_connexion"/>
+            </tree>
+        </field>
+    </record>
+    <record id="mano_action_resolver" model="ir.actions.act_window">
+        <field name="name">Setting</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mano.setting</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="mano_menu_resolver" name="Resolver" action="mano_action_resolver"
+              sequence="1" parent="mano_menu"/>
+
+</odoo>

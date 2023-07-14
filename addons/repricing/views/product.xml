@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_view_repricing_form" model="ir.ui.view">
+            <field name="name">product.repricing.view.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Repricing">
+                        <group>
+                            <group>
+                                <field name="is_price_plafond_off"/>
+                                <field name="price_plafond"/>
+                                <field name="price_plancher"/>
+                                <field name="buybox_seller_name"/>
+                                <field name="buybox_seller_price"/>
+                                <field name="first_seller_name"/>
+                                <field name="first_seller_price"/>
+                                <field name="preconisation_odoo"/>
+                                <field name="scrapping_status"/>
+                                <field name="status_repricing"/>
+                                <field name="figer"/>
+                                <field name="restauring"/>
+                                <field name="date_scrapping"/>
+                            </group>
+                            <group>
+                                <h2>Ancien Valeurs</h2>
+                                <field name="buybox_seller_name_old"/>
+                                <field name="buybox_seller_price_old"/>
+                                <field name="first_seller_name_old"/>
+                                <field name="first_seller_price_old"/>
+                                <field name="preconisation_odoo_old"/>
+                                <field name="scrapping_status_old"/>
+                                <field name="status_repricing_old"/>
+                                <field name="figer_old"/>
+                                <field name="restauring_old"/>
+                                <field name="seller_outtilage_online"/>
+                                <field name="product_not_found"/>
+                                <field name="product_state"/>
+                                <field name="description_product_state"/>
+                                <field name="buybox_shipping"/>
+                                <field name="buybox_stock"/>
+                                <field name="buybox_mf"/>
+                                <field name="order_number_oo_mf"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

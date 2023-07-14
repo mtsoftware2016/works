@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.cron" id="mano_cron_get_order">
+            <field name="name">Mano Get Orders</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="state">code</field>
+            <field name="code">model.create_order_from_mano()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+
+        <record model="ir.cron" id="mano_cron_get_order_mf">
+            <field name="name">Mano Get Orders MF</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="state">code</field>
+            <field name="code">model.create_order_from_mano_mf()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+
+        <record model="ir.cron" id="mano_update_offers">
+            <field name="name">Update Mano Offers</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="state">code</field>
+            <field name="code">model.update_offers_mano()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+
+
+        <record model="ir.cron" id="mano_update_offers_fr">
+            <field name="name">Update Mano Offers Fr</field>
+            <field name="model_id" ref="model_mano_mano"/>
+            <field name="state">code</field>
+            <field name="code">model.update_offers_mano_fr()</field>
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+        </record>
+    </data>
+</odoo>
+
+

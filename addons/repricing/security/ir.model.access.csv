@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_product_ceiling_price,product.ceiling.price,repricing.model_product_ceiling_price,,1,1,1,1
+access_product_price_route,product.price.route,repricing.model_product_price_route,,1,1,1,1
+access_product_price_route_delivery,product.price.route.delivery,repricing.model_product_price_route_delivery,,1,1,1,1
+access_bright_data_collector,bright.data.collectore,repricing.model_bright_data_collector,,1,1,1,1
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="products_mf_form_view_mano" model="ir.ui.view">
+            <field name="name">product.product.form.mano</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='property_stock_inventory']" position="after">
+                    <field name="virtual_available_without_incoming_qty_v1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
