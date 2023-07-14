@@ -1,0 +1,144 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_order_section_order
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20220617\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-09 23:25+0000\n"
+"PO-Revision-Date: 2022-08-09 23:25+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_order_section_order
+#: model:ir.model.fields.selection,name:sale_order_section_order.selection__sale_order_line__shift_mode__after
+#: model:ir.model.fields.selection,name:sale_order_section_order.selection__sale_order_section_wizard__shift_mode__after
+msgid "After"
+msgstr "Après"
+
+#. module: sale_order_section_order
+#: model_terms:ir.ui.view,arch_db:sale_order_section_order.sale_order_view_form_inherit
+msgid "Alter Section order"
+msgstr "Modifier l'ordre des sections"
+
+#. module: sale_order_section_order
+#: model:ir.model.fields.selection,name:sale_order_section_order.selection__sale_order_line__shift_mode__before
+#: model:ir.model.fields.selection,name:sale_order_section_order.selection__sale_order_section_wizard__shift_mode__before
+msgid "Before"
+msgstr "Avant"
+
+#. module: sale_order_section_order
+#: model_terms:ir.ui.view,arch_db:sale_order_section_order.sale_order_section_wizard_view
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sale_order_section_order
+#: code:addons/sale_order_section_order/wizard/sale_order_section_wizard.py:0
+#, python-format
+msgid "No section is selected!"
+msgstr "Aucune section n'est sélectionnée!"
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__order_id
+msgid "Order"
+msgstr "Ordre"
+
+#. module: sale_order_section_order
+#: model:ir.model.fields.selection,name:sale_order_section_order.selection__sale_order_line__shift_mode__end
+#: model:ir.model.fields.selection,name:sale_order_section_order.selection__sale_order_section_wizard__shift_mode__end
+msgid "Order End"
+msgstr "En fin de devis"
+
+#. module: sale_order_section_order
+#: model:ir.model.fields.selection,name:sale_order_section_order.selection__sale_order_line__shift_mode__start
+#: model:ir.model.fields.selection,name:sale_order_section_order.selection__sale_order_section_wizard__shift_mode__start
+msgid "Order Start"
+msgstr "en début de devis"
+
+#. module: sale_order_section_order
+#: model:ir.model,name:sale_order_section_order.model_sale_order_section_wizard
+msgid "Sale Order Section wizard"
+msgstr "Assistant de section de commande de vente"
+
+#. module: sale_order_section_order
+#: model:ir.model,name:sale_order_section_order.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: sale_order_section_order
+#: model:ir.model,name:sale_order_section_order.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: sale_order_section_order
+#: model_terms:ir.ui.view,arch_db:sale_order_section_order.sale_order_section_wizard_view
+msgid "Save"
+msgstr "Sauvegarder"
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_line__section_id
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__section_id
+msgid "Section"
+msgstr ""
+
+#. module: sale_order_section_order
+#: model:ir.actions.act_window,name:sale_order_section_order.action_open_sale_order_section_wizard
+msgid "Section Order"
+msgstr "Ordre de section"
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_line__shift_mode
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__shift_mode
+msgid "Shift Mode"
+msgstr "Mode de déplacement"
+
+#. module: sale_order_section_order
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_line__target_section_id
+#: model:ir.model.fields,field_description:sale_order_section_order.field_sale_order_section_wizard__target_section_id
+msgid "Target Section"
+msgstr "Section cible"
+
+#. module: sale_order_section_order
+#: model_terms:ir.ui.view,arch_db:sale_order_section_order.sale_order_section_wizard_view
+msgid "Save and add"
+msgstr "Sauvegarder et ajouter"
