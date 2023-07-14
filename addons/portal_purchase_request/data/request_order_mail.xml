@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="order_approved_mail" model="mail.template">
+            <field name="name">Order Approved Mail</field>
+            <field name="subject">Order Approved</field>
+            <field name="email_from">${user.email}</field>
+            <field name="email_to">${ctx.get('email_to')}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="model_order_request"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                <![CDATA[
+                Dear ${ctx.get('name')},  <br>
+              Your manager has approved the order ${ctx.get('order_number')}.  <br>
+              Please go to your order and click on the button “Buy product” <br>
+            <a href="${ctx.get('url')}"> Back to your Order</a>
+                ]]>
+            </field>
+        </record>
+
+        <record id="order_rejected_mail" model="mail.template">
+            <field name="name">Order Rejected Mail</field>
+            <field name="subject">Order Rejected</field>
+            <field name="email_from">${user.email}</field>
+            <field name="email_to">${ctx.get('email_to')}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="model_order_request"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                <![CDATA[
+                Dear ${ctx.get('name')},  <br>
+             sadly your order was rejected for this month, but you can create a
+             new one for the same product or a different one next month.Regards.  <br>
+            <a href="${ctx.get('url')}"> Back to your Order</a>
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

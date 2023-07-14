@@ -6,3 +6,7 @@ This module create a connexion between Odoo and ManoMano marketplace and import 
 ## 2. Google Merchant
 This module create an XML file with format google merchant and send it to an FTP Server.
 
+
+## 3. Portal Purchase Request
+ This module allow employee to create request to purchase product from Portal.
+

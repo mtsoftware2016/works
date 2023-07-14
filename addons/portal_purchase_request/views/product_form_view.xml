@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="product_view_form_employee_autorisation" model="ir.ui.view">
+        <field name="name">product.view.form.employee.autorisation</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Employee Autorization">
+                    <button name="autorize_all_employee" string="Autorize All Employeee" type="object"
+                            class="btn-primary"/>
+                    <group>
+                        <field name="user_ids" widget="many2many_tags"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,25 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_order_request,order.request.acces,portal_purchase_request.model_order_request,base.group_portal,1,1,1,1
+access_order_request_line,order.request.line.acces,portal_purchase_request.model_order_request_line,base.group_portal,1,1,1,1
+access_team_accounting,order.request.acces,portal_purchase_request.model_order_request,purchase.group_purchase_manager,1,1,0,0
+access_team_accounting.request.line,order.request.line.acces,portal_purchase_request.model_order_request_line,purchase.group_purchase_manager,1,1,0,0
+access_attachment_portal_user,ir.attachment portal user,base.model_ir_attachment,base.group_portal,1,0,0,0
+access_attachment_portal_manager,ir.attachment portal manager,base.model_ir_attachment,base.group_portal,1,0,0,0
+access_mail_template_portal,mail.template,mail.model_mail_template,base.group_portal,1,0,0,0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

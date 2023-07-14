@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_home_doctor" inherit_id="portal.portal_my_home" name="Portal Doctors">
+        <xpath expr="//div[@class='o_portal_docs list-group']" position="after">
+            <a href="/order_requests" t-if="group_user or group_manager"
+               class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                Order Requests
+                <span class="badge badge-secondary badge-pill">
+                    <t t-esc="order_requests"/>
+                </span>
+            </a>
+        </xpath>
+    </template>
+</odoo>

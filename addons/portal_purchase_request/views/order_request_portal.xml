@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_breadcrumbs_inherit" inherit_id='portal.portal_breadcrumbs' name="Portal Breadcrumbs Inherit">
+        <xpath expr="//li[@class='breadcrumb-item']" position="inside">
+            <a t-if="page_name == 'order_request'" href="/order_requests">/ Order Requests</a>
+            <a t-if="page_name == 'new_request'" href="/order_requests">/ Order Requests</a>
+            <li t-if="page_name == 'new_request'" class="breadcrumb-item">New Request</li>
+            <li t-if="page_name == 'order_request'" class="breadcrumb-item">
+                <t t-esc="order.name"/>
+            </li>
+        </xpath>
+    </template>
+
+
+    <!-- Order Request List -->
+    <template id="portal_order_requests" name="Order Request Employee">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Requests</t>
+            </t>
+            <div class="portal_request">
+                <t t-if="not requests_order">
+                    <p>There are currently no Requests for you!</p>
+                </t>
+                <div class="container mt32" t-if="authorization and not is_manager and create">
+                    <span style="float:left;">
+                        <a href="/new/order">
+                            <i class="fa fa-plus-square">
+                                <b>&amp;nbsp; Create Order</b>
+                            </i>
+                        </a>
+                    </span>
+                </div>
+                <t t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Order number</th>
+                            <th>State</th>
+                            <th>Date Creation</th>
+                            <th>Attachments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="requests_order" t-as="order">
+                            <tr t-att-class="'font-weight-bold'">
+                                <td>
+                                    <a t-attf-href="/order/#{slug(order)}">
+                                        <span t-field="order.name"/>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <span t-field="order.state"/>
+                                </td>
+                                <td>
+                                    <span t-field="order.create_date"/>
+                                </td>
+
+                                <td>
+                                    <t t-foreach="order.attachment_ids" t-as="attachment">
+                                        <a t-attf-href="/web/content/#{attachment.id}?download=true" target="_blank">
+                                            <div class='oe_attachment_embedded o_image' t-att-title="attachment.name"
+                                                 t-att-data-mimetype="attachment.mimetype"
+                                                 t-attf-data-src="/web/image/#{attachment.id}/100x80"/>
+                                        </a>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <!-- Create Order Request  -->
+    <template id="create_order_request" name="Create Order Request">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">New Request</t>
+            </t>
+            <script type="text/javascript" src="/web/static/lib/jquery/jquery.js"/>
+            <div class="container" style="padding-top: 25px;">
+                <form action="/order_requests/create" method="POST" enctype="multipart/form-data" id="example-form">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Validation</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure that you want to save the request?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" name="user_id" t-att-value="user_id.id"/>
+                    <div class="col-md-12" style="margin-bottom: 20px;">
+                        <div class="card cta cta--featured">
+
+                            <div class="card-block">
+                                <div class="form-group row" style="padding: 10px;">
+                                    <div class="col-sm-3 " style="margin-left: 2%;">
+                                        <label for="name" class="col-sm-12 col-form-label">Product</label>
+                                        <SELECT class="form-control" name="product" id="product" size="1"
+                                                required="required">
+                                            <option value="">Choose here</option>
+
+                                            <t t-foreach="products" t-as="product">
+                                                <option t-att-value="product.id">
+                                                    <t t-esc="product.name"/>
+                                                </option>
+                                            </t>
+                                        </SELECT>
+                                    </div>
+                                    <div class="col-sm-3 " style="margin-left: 2%;">
+                                        <label for="name" class="col-sm-12 col-form-label">Price</label>
+                                        <SELECT class="form-control" name="vendor" id="vendors_select" size="1"
+                                                required="required">
+                                        </SELECT>
+                                    </div>
+
+                                    <div class="col-sm-5">
+                                        <label for="qty" class="col-sm-12 col-form-label">Quantity</label>
+                                        <input type="number" class="form-control" name="quantity" style="width: 46%;"
+                                               required="required" id="qty"/>
+                                    </div>
+
+                                    <div class="tvendor">
+                                        <table class="table table-striped table-bordered table_vendor"
+                                               style="display:none;">
+                                            <thead>
+                                                <th>Vendor</th>
+                                                <th>Price</th>
+                                            </thead>
+                                            <tbody id="vendor_list">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <span style="float:right; display:none;" id="subtotal_price">
+                                            <strong>Subtotal:</strong>
+                                            <span id="subtotal"/>
+                                            <br/>
+                                            <strong>Tax:</strong>
+                                            <span id="tax"/>
+                                            <br/>
+                                            <strong>Total:</strong>
+                                            <span id="total"/>
+                                        </span>
+                                    </div>
+
+                                </div>
+                                <input type="hidden" class="form-control" name="price" id="unit_price"/>
+                                <input type="hidden" class="form-control" id="qauntity"/>
+                                <div class="form-group row" style="margin: 5%;">
+                                    <div class="controls">
+                                        <div class="entry input-group col-xs-3">
+                                            <input class="btn btn-primary" name="0" type="file"
+                                                   required="required"
+                                                   style="margin-left:10px;margin-top: 10px;"
+                                                   id="upload_file"/>
+                                            <input type="hidden" id="upload_file_count" name="upload_file_count"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="select_count" id="select_count"/>
+
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                style="margin: 4%;float: right;"
+                                                data-target="#exampleModal">Request product
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <!-- Display Order Request -->
+
+    <template id="display_order_request" name="Order Request Full Informations">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Purchase Request</t>
+            </t>
+            <!--        <t t-call="website.layout">-->
+
+            <div class="container" style="padding-top: 25px;">
+                <style>
+                    label {
+                    font-weight: 800;
+                    }
+                </style>
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <input type="hidden" name="user_id" t-att-value="user_id.id"/>
+                <input type="hidden" id="order_id" t-att-value="order.id"/>
+                <div class="col-md-12" style="margin-bottom: 20px;">
+                    <div class="card cta cta--featured">
+                        <div class="card-block" style="background: #f1f1f1;">
+
+                            <div class="container px-1 px-md-4 py-5 mx-auto">
+                                <div class="card">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-12">
+                                            <div class="row justify-content-between top">
+
+                                                <div class="row d-flex icon-content">
+                                                    <img class="icon"
+                                                         src="/portal_purchase_request/static/src/images/step1.png"/>
+                                                    <div class="d-flex flex-column">
+                                                        <p class="font-weight-bold">Draft
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row d-flex icon-content">
+                                                    <img class="icon"
+                                                         src="/portal_purchase_request/static/src/images/step1.png"/>
+                                                    <div class="d-flex flex-column">
+                                                        <p class="font-weight-bold">Approved
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row d-flex icon-content">
+                                                    <img class="icon"
+                                                         src="/portal_purchase_request/static/src/images/step2.png"/>
+                                                    <div class="d-flex flex-column">
+                                                        <p class="font-weight-bold">Purchase
+                                                            <br/>
+                                                            in progress
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row d-flex icon-content">
+                                                    <img class="icon"
+                                                         src="/portal_purchase_request/static/src/images/step3.png"/>
+                                                    <div class="d-flex flex-column">
+                                                        <p class="font-weight-bold">Ready<br/>to pick-up
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row d-flex icon-content">
+                                                    <img class="icon"
+                                                         src="/portal_purchase_request/static/src/images/step4.png"/>
+                                                    <div class="d-flex flex-column">
+                                                        <p class="font-weight-bold">Done
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <t t-if="order.state=='rejected'">
+                                                <style>
+                                                    #progressbar li.active:before, #progressbar li.active:after {
+
+                                                    background: red;
+
+                                                    }
+
+                                                </style>
+                                            </t>
+
+                                            <ul id="progressbar" class="text-center">
+                                                <li class="active step0"/>
+                                                <li id="st1"
+                                                    t-att-class="'active step0' if order.state in ['approved','purchase_in_progress','ready_pick_up','done'] else 'step0' "/>
+                                                <li id="st2"
+                                                    t-att-class="'active step0' if order.state in ['purchase_in_progress','done','ready_pick_up'] else 'step0' "/>
+                                                <li t-att-class="'active step0' if order.state in ['ready_pick_up','done'] else 'step0' "/>
+                                                <li t-att-class="'active step0' if order.state =='done' else 'step0' "/>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <t t-if="is_user and order.state=='approved'">
+                                    <button type="submit" class="btn btn-primary" style="margin: 6px;"
+                                            id="buy_product">Buy product
+                                    </button>
+                                </t>
+
+                                <t t-if="is_manager and order.state not in ('approved','rejected','purchase_in_progress')">
+                                    <button type="submit" class="btn btn-primary" style="margin: 6px;"
+                                            id="accepter_order">Accept
+                                        Order
+                                    </button>
+                                </t>
+                                <t t-if="is_manager and order.state not in ('rejected','ready_pick_up','purchase_in_progress')">
+                                    <button type="submit" class="btn btn-primary" style="margin: 6px;"
+                                            id="reject_order">Reject Order
+                                    </button>
+                                </t>
+                            </div>
+
+                        </div>
+
+                        <div class="card-body">
+                            <span>
+                                <b>Name :</b> &amp;nbsp;
+                                <t t-esc="partner.name"/>
+                            </span>
+                            <br/>
+
+                            <span>
+                                <b>Email :</b> &amp;nbsp;
+                                <t t-esc="partner.email"/>
+                            </span>
+                            <br/>
+
+                            <span>
+                                <b>Phone :</b> &amp;nbsp;
+                                <t t-esc="partner.phone"/>
+                            </span>
+                            <br/>
+
+                            <span>
+                                <b>Company :</b> &amp;nbsp;
+                                <t t-esc="partner.parent_id.name"/>
+                            </span>
+                            <br/>
+
+                            <span>
+                                <b>Supplier :</b> &amp;nbsp;
+                                <t t-esc="vendor_name"/>
+                            </span>
+                            <br/>
+
+                            <span>
+                                <b>Address :</b> &amp;nbsp;
+                                <t t-esc="partner.street"/>,
+                                <t t-esc="partner.street2"/>,
+                                <t t-esc="partner.city"/>,
+                                <t t-esc="partner.zip"/>
+                            </span>
+                            <br/>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table table-striped table-bordered table_request" style="margin-top: 10px;">
+                                <thead>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Tax</th>
+                                    <th>Price</th>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="order.line_ids" t-as="line">
+                                        <tr>
+                                            <td>
+                                                <img t-attf-src="data:image/jpeg;base64,{{line.sudo().product_id.image_1920}}"
+                                                     width="65"/>
+                                                <t t-esc="line.sudo().product_id.name"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="line.quantity"/>
+                                            </td>
+                                            <td>
+                                                <ul>
+                                                    <t t-foreach="line.sudo().tax_ids" t-as="tax">
+                                                        <li t-esc="tax.name"/>
+                                                    </t>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <t t-esc="line.unit_price"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card" style="margin: 1%;">
+                            <div class="card-header">
+                                <h5 style="color: red;font-weight: 800;">Attachments
+                                </h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <t t-foreach="order.attachment_ids" t-as="attachment">
+                                    <li class="list-group-item">
+                                        <a t-attf-href="/web/content/#{attachment.id}?download=true"
+                                           target="_blank">
+                                            <div class='oe_attachment_embedded o_image'
+                                                 t-att-title="attachment.name"
+                                                 t-att-data-mimetype="attachment.mimetype"
+                                                 t-attf-data-src="/web/image/#{attachment.id}/100x80"/>
+                                            <t t-esc="attachment.name"/>
+                                        </a>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

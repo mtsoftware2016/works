@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="order_request_form_view" model="ir.ui.view">
+        <field name="name">Order Requests</field>
+        <field name="model">order.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="change_request_order_to_done"
+                            attrs="{'invisible': [('state', '!=', 'ready_pick_up')]}"
+                            class="oe_highlight" string="Done" type="object"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="vendor_id"/>
+
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Orders">
+                            <field name="line_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="tax_ids" widget="many2many_tags"/>
+                                    <field name="unit_price"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Attachments">
+                            <group>
+                                <field name="attachment_ids" widget="many2many_binary"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="order_request_tree_view" model="ir.ui.view">
+        <field name="name">Order Requests</field>
+        <field name="model">order.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="vendor_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="order_request_action" model="ir.actions.act_window">
+        <field name="name">Order Requests</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">order.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="order_request_menu" name="Order Request" action="order_request_action" sequence="1"
+              groups="purchase.group_purchase_manager"/>
+</odoo>

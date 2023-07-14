@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="front_asset_extend" inherit_id="website.assets_frontend" name="Website Extend Assets ">
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/portal_purchase_request/static/src/js/vendors.js"/>
+            <link rel="stylesheet" href="/portal_purchase_request/static/src/css/portal.css"/>
+        </xpath>
+    </template>
+</odoo>
