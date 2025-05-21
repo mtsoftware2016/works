@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# pylint: disable=pointless-statement
 {
     "name": "Repricing",
     "version": "16.0.0.0",

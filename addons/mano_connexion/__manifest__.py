@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# pylint: disable=pointless-statement
+
 
 {
     "name": "Mano Connexion",
