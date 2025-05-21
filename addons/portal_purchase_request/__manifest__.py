@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 # pylint: disable=pointless-statement
-
 {
     "name": "Purchase Request",
     "summary": """
