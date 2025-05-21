@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
+
+
 class Product(models.Model):
-    _inherit = 'product.product'
+    _inherit = "product.product"
 
     virtual_available_without_incoming_qty_v1 = fields.Float(
-        string='Stock disponible Outillage Online',
-        compute='get_virtual_available_without_incoming_qty_v1'
+        string="Stock disponible Outillage Online",
+        compute="get_virtual_available_without_incoming_qty_v1",
     )
 
-    @api.depends('stock_quantity_by_location_ids')
+    @api.depends("stock_quantity_by_location_ids")
     def get_virtual_available_without_incoming_qty_v1(self):
         for rec in self:
             qty = 0

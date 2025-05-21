@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 
 
 class DeliveryCarrier(models.Model):
-    _inherit = 'delivery.carrier'
+    _inherit = "delivery.carrier"
 
-    tracking_url = fields.Text(
-        string='Tracking Url'
-    )
+    tracking_url = fields.Text(string="Tracking Url")

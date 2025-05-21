@@ -1,38 +1,39 @@
 # -*- coding: utf-8 -*-
 
 from email.policy import default
-from odoo import models, fields, api, _
+
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
 class SaleOrderLine(models.Model):
-    _inherit = 'sale.order.line'
-    
+    _inherit = "sale.order.line"
+
     section_id = fields.Many2one(
-        string='Section',
-        comodel_name='sale.order.line',
+        string="Section",
+        comodel_name="sale.order.line",
         copy=False,
     )
-    
+
     shift_mode = fields.Selection(
         selection=[
-            ('start', 'Order Start'),
-            ('end', 'Order End'),
-            ('before', 'Before'),
-            ('after', 'After'),
+            ("start", "Order Start"),
+            ("end", "Order End"),
+            ("before", "Before"),
+            ("after", "After"),
         ],
-        default='start',
-        required=False
+        default="start",
+        required=False,
     )
 
     target_section_id = fields.Many2one(
-        string='Target Section',
-        comodel_name='sale.order.line',
+        string="Target Section",
+        comodel_name="sale.order.line",
         domain="[('display_type','=', 'line_section')]",
-        copy=False
+        copy=False,
     )
 
-    # ----------------------------------------------------------------------------------------------------  
+    # ----------------------------------------------------------------------------------------------------
     # 1- ORM Methods (create, write, unlink)
     # ----------------------------------------------------------------------------------------------------
 
@@ -47,7 +48,7 @@ class SaleOrderLine(models.Model):
     # ----------------------------------------------------------------------------------------------------
     # 4- Onchange methods (namely onchange_***)
     # ----------------------------------------------------------------------------------------------------
-    
+
     # ----------------------------------------------------------------------------------------------------
     # 5- Actions methods (namely action_***)
     # ----------------------------------------------------------------------------------------------------

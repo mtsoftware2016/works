@@ -12,4 +12,3 @@ This module create an XML file with format google merchant and send it to an FTP
 
 ## 4.Sale Order Section
  This module allow order Section Order lines.
-

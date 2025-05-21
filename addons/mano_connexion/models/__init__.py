@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from . import sale_order
-from . import mano
-from . import mano_setting
-from . import res_partner
-from . import delivery_carrier
-from . import stock_picking
-from . import product
-from . import res_config_settings
-
+from . import (
+    delivery_carrier,
+    mano,
+    mano_setting,
+    product,
+    res_config_settings,
+    res_partner,
+    sale_order,
+    stock_picking,
+)
