@@ -20,3 +20,12 @@ repos:
           - --remove-all-unused-imports
           - --remove-duplicate-keys
           - --remove-unused-variables
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: isort except __init__.py
+        args:
+          - --settings=.
+        exclude: /__init__\.py$
