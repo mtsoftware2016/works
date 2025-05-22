@@ -9,7 +9,7 @@ from datetime import datetime
 
 import pandas as pd
 import requests
-from odoo import _, api, fields, models
+from odoo import fields, models
 from odoo.tools import ustr
 from odoo.tools.safe_eval import safe_eval
 from pexpect import run

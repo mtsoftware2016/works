@@ -6,7 +6,7 @@ import os
 from xml.dom import minidom
 
 from lxml import etree, html
-from odoo import api, fields, models
+from odoo import api, models
 from pexpect import run
 
 _logger = logging.getLogger(__name__)

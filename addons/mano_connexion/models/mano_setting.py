@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from datetime import date, timedelta
+from datetime import timedelta
 
-from odoo import _, api, fields, models
+from odoo import fields, models
 
 
 class ManoSetting(models.Model):

@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 
 from odoo import _, http
 from odoo.addons.http_routing.models.ir_http import slug
-from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.addons.portal.controllers.portal import pager as portal_pager
 from odoo.http import request
 from odoo.osv.expression import OR

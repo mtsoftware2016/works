@@ -2,7 +2,7 @@
 import logging
 from collections import defaultdict
 
-from odoo import _, api, fields, models, tools
+from odoo import _, api, models
 from odoo.exceptions import AccessError
 
 _logger = logging.getLogger(__name__)

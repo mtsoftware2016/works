@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from email.policy import default
 
-from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo import api, models
 
 
 class SaleOrder(models.Model):
